@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.cdnfonts.com/css/chunkfive-romanfootball-version-2');
+@import url('https://fonts.cdnfonts.com/css/rambla');
+@import "~bootstrap/dist/css/bootstrap.css";
+h1, h2{
+    font-family: 'ChunkFive', sans-serif;
+    text-transform: none;
+}
+p, button{
+    font-family: 'Rambla', sans-serif;
+}
