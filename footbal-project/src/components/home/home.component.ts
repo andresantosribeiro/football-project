@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ThemeService } from 'src/shared/services/theme.service';
 
+
 @Component({
   selector: 'home-component',
   templateUrl: './home.component.html',
@@ -12,5 +13,4 @@ export class HomeComponent implements OnInit{
     ngOnInit(): void {
       this.theme =  this.themeService.getCurrentTheme();
     }
-
 }

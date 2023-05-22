@@ -1,0 +1,34 @@
+.body{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-color: #85c194;
+}
+.title{
+  text-align: center;
+}
+.keyGroup{
+    margin-bottom: 1rem;
+}
+.form-container{
+    text-align: center;
+}
+.keyInput{
+    border-radius: 31px;
+    border: none;
+    width: 68.9%;
+    outline: none;
+    padding: 0.4rem;
+    font-family: 'Rambla', sans-serif;
+    text-align: center;
+}
+.signBtn{
+    border-radius: 30px;
+    padding: 10px 28px;
+    background-color: #60ab7399;
+    font-family: 'Rambla', 'sans-serif';
+}
+
+
+  

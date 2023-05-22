@@ -6,7 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { RouterModule } from '@angular/router';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -16,10 +17,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     ReactiveFormsModule,
     FormsModule,
+    RouterModule,
     NgbModule,
     CommonModule
   ],
-  providers: [ThemeService],
+  providers: [ThemeService, LoginService],
   bootstrap: [],
   exports:[
     NgbModule,
