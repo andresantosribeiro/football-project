@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService{
-    key: string = ''
+    key: string = '';
     constructor(){}
 
     setKey(loginKey: string){
@@ -12,5 +12,8 @@ export class LoginService{
     }
     isAuthenticated(){
        return this.key ? true : false;
+    }
+    getKey(){
+      return this.key;
     }
 }

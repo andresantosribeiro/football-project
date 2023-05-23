@@ -8,20 +8,27 @@ import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { LoginService } from './services/login.service';
+import { CarouselModule } from 'primeng/carousel';
+import { FootballService } from './services/football.service';
+import { SkeletonModule } from 'primeng/skeleton';
+import { CarouselComponent } from './components/carousel/carousel.components';
 
 @NgModule({
   declarations: [
     PageNotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    CarouselComponent
   ],
   imports: [
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
     NgbModule,
-    CommonModule
+    CommonModule,
+    CarouselModule,
+    SkeletonModule
   ],
-  providers: [ThemeService, LoginService],
+  providers: [ThemeService, LoginService, FootballService],
   bootstrap: [],
   exports:[
     NgbModule,
@@ -29,7 +36,10 @@ import { LoginService } from './services/login.service';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     PageNotFoundComponent,
-    HeaderComponent
+    HeaderComponent,
+    CarouselModule,
+    SkeletonModule,
+    CarouselComponent
   ]
 })
 export class SharedModule { }
