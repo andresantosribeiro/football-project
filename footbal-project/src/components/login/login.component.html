@@ -2,14 +2,16 @@
     <div class="login-container">
         <h2 class="title">Login</h2>
         <div class="form-container">
-            <form [formGroup]="loginGroup" (ngSubmit)="onSubmit()">
+            <form [formGroup]="loginGroup" (ngSubmit)="onSubmit($event)">
               <div class="form-group keyGroup">
-                <input class="keyInput" type="text" id="key" name="key" placeholder="api-key" formControlName="key">
+                <input class="keyInput"  pInputText pTooltip="don´t have it? click in sign up, and then go to 'My access', copy/paste the api-key here"
+                 [showDelay]="300" [hideDelay]="300" type="text" id="key" name="key" placeholder="api-key" formControlName="key">
+                <p class="keyError" *ngIf="key?.invalid && (key?.dirty || key?.touched)">Your api-key is incorrect, make sure that your api key has 32 caracters.</p>
               </div>
-              <div class="form-group">
-                    <p>copy/paste the api key: {{apiKey}}</p>
+              <div class="flex">
+                <button [disabled]="!loginGroup.valid" [ngClass]="!loginGroup.valid ? 'signBtn invalid' : 'signBtn' " type="submit">Sign in</button>
+                <a target="_blank" href="https://dashboard.api-football.com/register" class="signBtn" type="button">Sign up</a>    
               </div>
-              <button class="signBtn" type="submit">Sign in</button>
             </form>
         </div>
     </div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, take } from 'rxjs';
 import { FootballService } from 'src/shared/services/football.service';
 import { ThemeService } from 'src/shared/services/theme.service';
 
@@ -9,24 +9,24 @@ import { ThemeService } from 'src/shared/services/theme.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']  
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit, OnDestroy{
     theme: string = '';
     countries: any;
     league: any;
+    themeSubscription: Subscription = new Subscription();
     responsiveOptions: Array<any> = [];
     constructor( private themeService: ThemeService,
                  private footBallService: FootballService 
       ){}
+  
     async ngOnInit() {
-      this.theme =  this.themeService.getCurrentTheme();
+      this.themeSubscription =  this.themeService.getCurrentTheme().subscribe({next: (theme)=>{
+        this.theme = theme
+      }});
       await this.footBallService.getCountries().pipe(take(1)).subscribe((value: any)=>{
       this.countries = value.response;
-      console.log(this.countries)
       })
-      // await this.footBallService.getLeague('').pipe(take(1)).subscribe((value: any)=>{
-      //   this.league = value.response;
-      //   console.log(this.league)
-      //   })
+     
       this.responsiveOptions = [
         {
             breakpoint: '1199px',
@@ -44,5 +44,8 @@ export class HomeComponent implements OnInit{
             numScroll: 1
         }
     ];
+    }
+    ngOnDestroy(): void {
+      this.themeSubscription.unsubscribe();
     }
 }

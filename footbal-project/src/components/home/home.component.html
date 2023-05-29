@@ -1,3 +1,4 @@
-<header-component></header-component>
- <carousel-component [countries]="countries"></carousel-component>
-{{league}}
+<div [ngClass]=" theme == 'dark' ? 'darkNavTheme' : 'lightNavTheme'">
+  <header-component></header-component>
+  <carousel-component [countries]="countries"></carousel-component>
+</div>

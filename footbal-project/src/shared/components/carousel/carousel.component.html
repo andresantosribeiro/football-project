@@ -1,10 +1,32 @@
-<p-skeleton *ngIf="!countries" width="100%" height="300px"></p-skeleton>
-<div *ngIf="countries" class="card">
-    <p-carousel [value]="countries" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
-        <ng-template let-country pTemplate="item">
-            <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                 <img type="button" (click)="countryChoosed(country.flag)" class="countryImg" src="{{country.flag}}" alt="country">
-            </div>
-        </ng-template>
-    </p-carousel>
+<div [@scrollAnimation]="scroll">
+    <p-skeleton  *ngIf="!countries" width="100%" height="300px"></p-skeleton>
+    <div id="country" *ngIf="countries"class="card">
+        <p-carousel  [ngClass]=" theme == 'dark' ? 'darkTheme' : 'lightTheme'" [value]="countries" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
+            <ng-template let-country pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                     <img type="button" (click)="choosedCountry(country.name)" class="countryImg" src="{{country.flag}}" alt="country">
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <div *ngIf="isLeagueLoaded" id="league" class="card">
+        <p-carousel [ngClass]=" theme == 'dark' ? 'darkTheme' : 'lightTheme'" [value]="leagues" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
+            <ng-template let-obj  pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                     <img type="button" (click)="choosedLeague(obj.league.id)" class="countryImg" src="{{obj.league.logo}}" alt="league">
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <p-skeleton *ngIf="isLoading" width="100%" height="300px"></p-skeleton>
+    <div *ngIf="isTeamLoaded" id="team" class="card">
+        <p-carousel [ngClass]=" theme == 'dark' ? 'darkTheme' : 'lightTheme'" [value]="teams" [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions" autoPlayInterval="3000">
+            <ng-template let-obj  pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+                     <img type="button" (click)="choosedTeam(obj.team.id)" class="countryImg" src="{{obj.team.logo}}" alt="league">
+                </div>
+            </ng-template>
+        </p-carousel>
+    </div>
+    <i *ngIf="isLeagueLoaded" (click)="scrollTo()" [ngClass]="atTheBottom ? 'bi bi-arrow-up-circle scrollBtn' : 'bi bi-arrow-down-circle scrollBtn'"></i>
 </div>

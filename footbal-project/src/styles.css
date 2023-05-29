@@ -12,3 +12,12 @@ h1, h2{
 p, button{
     font-family: 'Rambla', sans-serif;
 }
+.darkTheme{
+    background-color: #192a19;
+}
+.lightTheme{
+    background-color: #66d5665e;
+}
+.darkTextTheme{
+    color:white !important;
+}

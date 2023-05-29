@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private currentTheme = 'light';
+  private currentTheme = new Subject<string>;
 
-  getCurrentTheme(): string {
-    return this.currentTheme;
+  getCurrentTheme(): Observable<string> {
+    return this.currentTheme.asObservable();
   }
 
-  toggleTheme(): string {
-    this.currentTheme = this.currentTheme === 'light' ? 'dark' : 'light';
-    return this.currentTheme
+  changeTheme(theme: string): void {
+     this.currentTheme.next(theme);
   }
 }

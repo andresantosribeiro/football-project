@@ -5,6 +5,9 @@
     height: 100vh;
     background-color: #85c194;
 }
+.login-container{
+    width: 253px;
+}
 .title{
   text-align: center;
 }
@@ -14,20 +17,36 @@
 .form-container{
     text-align: center;
 }
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
 .keyInput{
     border-radius: 31px;
     border: none;
-    width: 68.9%;
+    width: 100.9%;
     outline: none;
     padding: 0.4rem;
     font-family: 'Rambla', sans-serif;
     text-align: center;
+}
+.keyError{
+    color: rgb(189, 35, 35);
 }
 .signBtn{
     border-radius: 30px;
     padding: 10px 28px;
     background-color: #60ab7399;
     font-family: 'Rambla', 'sans-serif';
+    text-decoration: none;
+    color: black;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+.invalid{
+    background-color: gray;
 }
 
 

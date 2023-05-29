@@ -34,7 +34,7 @@ import { Router } from '@angular/router';
   
 })
 export class HeaderComponent implements OnInit{
-    isDark: string = '';
+    isDark: string = 'light';
     isExpanded: boolean = false;
     constructor( private themeService: ThemeService,
                  private router: Router 
@@ -42,15 +42,15 @@ export class HeaderComponent implements OnInit{
     ngOnInit(): void {
 
     }
-    changeTheme(){
-        this.isDark = this.themeService.toggleTheme();
+    changeTheme($event: any){
+      this.isDark = this.isDark == 'light' ? 'dark' : 'light'
+       this.isDark == 'light' ? this.themeService.changeTheme('light') : this.themeService.changeTheme('dark');
     }
     toggleAccordion(): void {
         this.isExpanded = !this.isExpanded;
     }
 
     goToHome(){
-      console.log('clicado')
-      this.router.navigateByUrl('/homes')
+      this.router.navigateByUrl('/home')
     }
 }

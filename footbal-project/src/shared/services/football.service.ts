@@ -26,8 +26,11 @@ export class FootballService{
     getSeasons(): Observable<any>{
         return this.http.get('https://v3.football.api-sports.io/leagues/seasons', {headers: this.headerOptions})
     }
-    getLeague(id:any){
-        return this.http.get(`https://v3.football.api-sports.io/leagues/${id}`, {headers: this.headerOptions})
+    getLeagues(){
+        return this.http.get(`https://v3.football.api-sports.io/leagues`, {headers: this.headerOptions})
+    }
+    getTeams(leagueId: number){
+        return this.http.get(`https://v3.football.api-sports.io/teams?league=${leagueId}&season=2021`, {headers: this.headerOptions})
     }
   
 }

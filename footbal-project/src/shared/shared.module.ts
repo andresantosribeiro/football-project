@@ -12,6 +12,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { FootballService } from './services/football.service';
 import { SkeletonModule } from 'primeng/skeleton';
 import { CarouselComponent } from './components/carousel/carousel.components';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CarouselComponent } from './components/carousel/carousel.components';
     NgbModule,
     CommonModule,
     CarouselModule,
-    SkeletonModule
+    SkeletonModule,
+    TooltipModule
   ],
   providers: [ThemeService, LoginService, FootballService],
   bootstrap: [],
@@ -39,7 +41,9 @@ import { CarouselComponent } from './components/carousel/carousel.components';
     HeaderComponent,
     CarouselModule,
     SkeletonModule,
-    CarouselComponent
+    CarouselComponent,
+    RouterModule,
+    TooltipModule
   ]
 })
 export class SharedModule { }
